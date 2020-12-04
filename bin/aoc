@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'aoc2020'
+
+day = 1
+
+OptionParser.new do |opts|
+  opts.on('-d', '--day=day', Integer, 'Day number') do |value|
+    day = value
+  end
+end.parse!(ARGV)
+
+puts Aoc2020::Solver.new(day: day).solve

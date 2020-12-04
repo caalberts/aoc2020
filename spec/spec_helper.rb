@@ -1,6 +1,8 @@
 require 'bundler/setup'
 require 'aoc2020'
 
+require 'rspec-parameterized'
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'

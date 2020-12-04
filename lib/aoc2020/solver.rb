@@ -2,7 +2,8 @@ module Aoc2020
   class Solver
     PROBLEMS = {
       1 => ReportRepair,
-      2 => PasswordPhilosophy
+      2 => PasswordPhilosophy,
+      3 => TobogganTrajectory
     }.freeze
 
     attr_reader :day

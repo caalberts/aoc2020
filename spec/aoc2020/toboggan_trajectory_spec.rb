@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Aoc2020::TobogganTrajectory do
-  subject { described_class.new(input.split("\n")) }
+  subject { described_class.new(input) }
 
   let(:input) do
     <<~INPUT

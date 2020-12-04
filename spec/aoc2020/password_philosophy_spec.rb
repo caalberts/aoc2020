@@ -10,7 +10,7 @@ RSpec.describe Aoc2020::PasswordPhilosophy do
   end
 
   describe '#process' do
-    subject { described_class.new(input.split("\n")) }
+    subject { described_class.new(input) }
 
     it 'counts number of valid password according to their policies' do
       expect(subject.process).to eq(1)

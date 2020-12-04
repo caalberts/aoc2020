@@ -10,7 +10,7 @@ module Aoc2020
 
     def fetch
       response = Faraday.get(uri, {}, headers)
-      response.body.split("\n")
+      response.body
     end
 
     private

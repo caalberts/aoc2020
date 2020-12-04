@@ -3,7 +3,7 @@ module Aoc2020
     DESIRED_SUM = 2020
 
     def initialize(input)
-      @input = input.map(&:to_i).sort
+      @input = input.split("\n").map(&:to_i).sort
     end
 
     def process

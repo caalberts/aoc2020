@@ -5,7 +5,7 @@ module Aoc2020
     attr_reader :input
 
     def initialize(input)
-      @input = input
+      @input = input.split("\n")
     end
 
     def process

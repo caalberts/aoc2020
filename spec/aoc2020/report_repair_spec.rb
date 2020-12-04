@@ -11,7 +11,7 @@ RSpec.describe Aoc2020::ReportRepair do
     INPUT
   end
 
-  subject { described_class.new(input.split("\n")) }
+  subject { described_class.new(input) }
 
   describe '#process' do
     it 'finds product of 3 integers that adds to 2020 and multiplies them' do

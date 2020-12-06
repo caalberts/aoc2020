@@ -3,7 +3,8 @@ module Aoc2020
     PROBLEMS = {
       1 => ReportRepair,
       2 => PasswordPhilosophy,
-      3 => TobogganTrajectory
+      3 => TobogganTrajectory,
+      4 => PassportProcessing
     }.freeze
 
     attr_reader :day

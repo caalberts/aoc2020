@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Aoc2020::PassportProcessing do
@@ -87,23 +89,23 @@ RSpec.describe Aoc2020::PassportProcessing do
       it 'returns passports with provided parameters' do
         passports = subject.read_passports(input)
 
-        passport_1 = passports[0]
-        expect(passport_1.hcl).to eq('#cfa07d')
-        expect(passport_1.eyr).to eq('2025')
-        expect(passport_1.pid).to eq('166559648')
-        expect(passport_1.iyr).to eq('2011')
-        expect(passport_1.ecl).to eq('brn')
-        expect(passport_1.hgt).to eq('59in')
+        passport1 = passports[0]
+        expect(passport1.hcl).to eq('#cfa07d')
+        expect(passport1.eyr).to eq('2025')
+        expect(passport1.pid).to eq('166559648')
+        expect(passport1.iyr).to eq('2011')
+        expect(passport1.ecl).to eq('brn')
+        expect(passport1.hgt).to eq('59in')
 
-        passport_2 = passports[1]
-        expect(passport_2.ecl).to eq('gry')
-        expect(passport_2.pid).to eq('860033327')
-        expect(passport_2.eyr).to eq('2020')
-        expect(passport_2.hcl).to eq('#fffffd')
-        expect(passport_2.byr).to eq('1937')
-        expect(passport_2.iyr).to eq('2017')
-        expect(passport_2.cid).to eq('147')
-        expect(passport_2.hgt).to eq('183cm')
+        passport2 = passports[1]
+        expect(passport2.ecl).to eq('gry')
+        expect(passport2.pid).to eq('860033327')
+        expect(passport2.eyr).to eq('2020')
+        expect(passport2.hcl).to eq('#fffffd')
+        expect(passport2.byr).to eq('1937')
+        expect(passport2.iyr).to eq('2017')
+        expect(passport2.cid).to eq('147')
+        expect(passport2.hgt).to eq('183cm')
       end
     end
 

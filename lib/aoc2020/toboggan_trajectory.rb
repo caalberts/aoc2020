@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Aoc2020
   class TobogganTrajectory
-    TREE = '#'.freeze
+    TREE = '#'
 
     Speed = Struct.new(:right, :down)
 

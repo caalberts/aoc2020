@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aoc2020/config'
 require 'aoc2020/input'
 require 'aoc2020/binary_boarding'

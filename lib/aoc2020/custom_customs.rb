@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'strscan'
 
 module Aoc2020
@@ -29,8 +31,6 @@ module Aoc2020
     def count_yes(group_answer)
       group_answer.map { |g| g.split('') }.inject(:&).count
     end
-
-    private
 
     class CustomScanner
       GROUP_SEPARATOR = "\n\n"

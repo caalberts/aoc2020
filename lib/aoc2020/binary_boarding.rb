@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Aoc2020
   class BinaryBoarding
     attr_reader :input

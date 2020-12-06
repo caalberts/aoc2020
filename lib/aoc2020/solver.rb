@@ -6,6 +6,7 @@ module Aoc2020
       3 => TobogganTrajectory,
       4 => PassportProcessing,
       5 => BinaryBoarding,
+      6 => CustomCustoms
     }.freeze
 
     attr_reader :day

@@ -4,7 +4,8 @@ module Aoc2020
       1 => ReportRepair,
       2 => PasswordPhilosophy,
       3 => TobogganTrajectory,
-      4 => PassportProcessing
+      4 => PassportProcessing,
+      5 => BinaryBoarding,
     }.freeze
 
     attr_reader :day

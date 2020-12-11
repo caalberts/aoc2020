@@ -10,9 +10,14 @@ module Aoc2020
       @input = input
     end
 
-    def process
+    def part1
       group_answers = read_groups(input)
-      group_answers.map { |g| count_yes(g) }.sum
+      group_answers.sum { |g| count_any_yes(g) }
+    end
+
+    def part2
+      group_answers = read_groups(input)
+      group_answers.sum { |g| count_all_yes(g) }
     end
 
     def read_groups(string)
@@ -28,7 +33,11 @@ module Aoc2020
       group_answers
     end
 
-    def count_yes(group_answer)
+    def count_any_yes(group_answer)
+      group_answer.map { |g| g.split('') }.inject(:|).count
+    end
+
+    def count_all_yes(group_answer)
       group_answer.map { |g| g.split('') }.inject(:&).count
     end
 

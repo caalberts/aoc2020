@@ -21,9 +21,15 @@ RSpec.describe Aoc2020::TobogganTrajectory do
     INPUT
   end
 
-  describe '#process' do
+  describe '#part1' do
+    it 'counts product of trees encountered along the way with speed 3' do
+      expect(subject.part1).to eq(7)
+    end
+  end
+
+  describe '#part2' do
     it 'counts product of trees encountered along the way with speed 1, 3, 5, 7, 0.5' do
-      expect(subject.process).to eq(336)
+      expect(subject.part2).to eq(336)
     end
   end
 

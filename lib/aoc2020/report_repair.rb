@@ -8,7 +8,11 @@ module Aoc2020
       @input = input.split("\n").map(&:to_i).sort
     end
 
-    def process
+    def part1
+      find_multiplication(2, @input, DESIRED_SUM)
+    end
+
+    def part2
       find_multiplication(3, @input, DESIRED_SUM)
     end
 

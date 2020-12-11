@@ -21,9 +21,14 @@ module Aoc2020
       @input = input
     end
 
-    def process
+    def part1
       passports = read_passports(input)
-      passports.count { |passport| valid_passport?(passport) }
+      passports.count { |passport| has_required_fields?(passport) }
+    end
+
+    def part2
+      passports = read_passports(input)
+      passports.count { |passport| has_valid_fields?(passport) }
     end
 
     def read_passports(string)
@@ -39,7 +44,12 @@ module Aoc2020
       passports
     end
 
-    def valid_passport?(passport)
+    def has_required_fields?(passport)
+      required = [BYR, IYR, EYR, HGT, HCL, ECL, PID]
+      required.all? { |field| !passport.public_send(field).nil? }
+    end
+
+    def has_valid_fields?(passport)
       valid_byr?(passport.byr) &&
         valid_iyr?(passport.iyr) &&
         valid_eyr?(passport.eyr) &&

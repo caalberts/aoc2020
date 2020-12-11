@@ -12,14 +12,15 @@ module Aoc2020
       7 => HandyHaversacks
     }.freeze
 
-    attr_reader :day
+    attr_reader :day, :part
 
-    def initialize(day: 1)
+    def initialize(day: 1, part: 1)
       @day = day
+      @part = part
     end
 
     def solve
-      PROBLEMS[day].new(input).process
+      PROBLEMS[day].new(input).public_send("part#{part}")
     end
 
     def verify_cookie

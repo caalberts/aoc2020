@@ -13,6 +13,12 @@ RSpec.describe Aoc2020::BinaryBoarding do
     INPUT
   end
 
+  describe '#part1' do
+    it 'finds highest seat id in the list of boarding passes' do
+      expect(subject.part1).to eq(820)
+    end
+  end
+
   describe '#find_seat' do
     it 'finds seat based on boarding pass' do
       expect(subject.find_seat('BFFFBBFRRR').id).to eq(567)

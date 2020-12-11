@@ -2,39 +2,49 @@
 
 module Aoc2020
   class PasswordPhilosophy
-    Policy = Struct.new(:positions, :letter)
-
     attr_reader :input
 
     def initialize(input)
       @input = input.split("\n")
     end
 
-    def process
-      entries = parse(input)
-      entries.count do |policy, password|
-        valid_password?(policy, password)
-      end
+    def part1
+      entries = validate(input, OccurencePolicy)
+      entries.count(true)
     end
+
+    def part2
+      entries = validate(input, PositionPolicy)
+      entries.count(true)
+    end
+
+    private
 
     PATTERN = /\A(\d+)-(\d+) ([a-z]): ([a-z]+)\z/.freeze
 
-    def parse(input)
-      input.map do |line|
-        match = line.match(PATTERN)
-        policy = Policy.new([match[1].to_i, match[2].to_i], match[3])
-        password = match[4]
-
-        [policy, password]
+    OccurencePolicy = Struct.new(:num1, :num2, :letter) do
+      def validate(password)
+        count = password.count(letter)
+        (num1..num2).include?(count)
       end
     end
 
-    def valid_password?(policy, password)
-      count = policy.positions.count do |position|
-        password[position - 1] == policy.letter
+    PositionPolicy = Struct.new(:num1, :num2, :letter) do
+      def validate(password)
+        [num1, num2].one? do |position|
+          password[position - 1] == letter
+        end
       end
+    end
 
-      count == 1
+    def validate(input, policy_class)
+      input.map do |line|
+        match = line.match(PATTERN)
+        policy = policy_class.new(match[1].to_i, match[2].to_i, match[3])
+        password = match[4]
+
+        policy.validate(password)
+      end
     end
   end
 end

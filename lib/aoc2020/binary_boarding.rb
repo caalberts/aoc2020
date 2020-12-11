@@ -17,7 +17,11 @@ module Aoc2020
       @input = input.split("\n")
     end
 
-    def process
+    def part1
+      input.map { |boarding_pass| find_seat(boarding_pass).id }.max
+    end
+
+    def part2
       seat_ids = input.map { |boarding_pass| find_seat(boarding_pass).id }.sort
       seat_ids.each_with_index do |seat_id, idx|
         next_seat = seat_id + 1

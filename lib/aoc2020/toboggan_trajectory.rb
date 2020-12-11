@@ -12,7 +12,11 @@ module Aoc2020
       @input = input.split("\n")
     end
 
-    def process
+    def part1
+      count_trees(Speed.new(3, 1))
+    end
+
+    def part2
       speeds = [
         Speed.new(1, 1),
         Speed.new(3, 1),

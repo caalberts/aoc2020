@@ -11,11 +11,19 @@ RSpec.describe Aoc2020::PasswordPhilosophy do
     INPUT
   end
 
-  describe '#process' do
+  describe '#part1' do
+    subject { described_class.new(input) }
+
+    it 'checks that given letter appears within the given range' do
+      expect(subject.part1).to eq(2)
+    end
+  end
+
+  describe '#part2' do
     subject { described_class.new(input) }
 
     it 'counts number of valid password according to their policies' do
-      expect(subject.process).to eq(1)
+      expect(subject.part2).to eq(1)
     end
   end
 end

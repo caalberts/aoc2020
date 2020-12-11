@@ -7,7 +7,31 @@ RSpec.describe Aoc2020::PassportProcessing do
 
   let(:input) { '' }
 
-  describe '#process' do
+  describe '#part1' do
+    let(:input) do
+      <<~INPUT
+        ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+        byr:1937 iyr:2017 cid:147 hgt:183cm
+
+        iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+        hcl:#cfa07d byr:1929
+
+        hcl:#ae17e1 iyr:2013
+        eyr:2024
+        ecl:brn pid:760753108 byr:1931
+        hgt:179cm
+
+        hcl:#cfa07d eyr:2025 pid:166559648
+        iyr:2011 ecl:brn hgt:59in
+      INPUT
+    end
+
+    it 'counts number of valid passport with required fields' do
+      expect(subject.part1).to eq(2)
+    end
+  end
+
+  describe '#part2' do
     context 'with valid passport' do
       let(:input) do
         <<~INPUT
@@ -27,7 +51,7 @@ RSpec.describe Aoc2020::PassportProcessing do
       end
 
       it 'counts number of valid passports' do
-        expect(subject.process).to eq(4)
+        expect(subject.part2).to eq(4)
       end
     end
 
@@ -51,7 +75,7 @@ RSpec.describe Aoc2020::PassportProcessing do
       end
 
       it 'counts number of valid passports' do
-        expect(subject.process).to eq(0)
+        expect(subject.part2).to eq(0)
       end
     end
   end
@@ -141,7 +165,7 @@ RSpec.describe Aoc2020::PassportProcessing do
 
     context 'with all information' do
       it 'is valid' do
-        expect(subject.valid_passport?(passport)).to be_truthy
+        expect(subject.has_valid_fields?(passport)).to be_truthy
       end
     end
 
@@ -149,7 +173,7 @@ RSpec.describe Aoc2020::PassportProcessing do
       let(:cid) { nil }
 
       it 'is valid' do
-        expect(subject.valid_passport?(passport)).to be_truthy
+        expect(subject.has_valid_fields?(passport)).to be_truthy
       end
     end
 
@@ -157,7 +181,7 @@ RSpec.describe Aoc2020::PassportProcessing do
       let(:byr) { nil }
 
       it 'is invalid' do
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
@@ -165,94 +189,94 @@ RSpec.describe Aoc2020::PassportProcessing do
       let(:byr) { nil }
 
       it 'is invalid' do
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid birth year' do
       it 'is invalid' do
         passport.byr = '1919'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.byr = '2003'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid issue year' do
       it 'is invalid' do
         passport.iyr = '2009'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.iyr = '2021'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid expiration year' do
       it 'is invalid' do
         passport.eyr = '2019'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.eyr = '2031'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid height in cm' do
       it 'is invalid' do
         passport.hgt = '149cm'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.hgt = '194cm'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid height in inches' do
       it 'is invalid' do
         passport.hgt = '58in'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.hgt = '77in'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid height unit' do
       it 'is invalid' do
         passport.hgt = '58mm'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid hair colour' do
       it 'is invalid' do
         passport.hcl = '#1234567'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.hcl = '#zzzzzz'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid eye colour' do
       it 'is invalid' do
         passport.ecl = 'abc'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.ecl = 'xyz'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
 
     context 'without valid passport id' do
       it 'is invalid' do
         passport.pid = '1234'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
 
         passport.pid = '1234567890'
-        expect(subject.valid_passport?(passport)).to be_falsey
+        expect(subject.has_valid_fields?(passport)).to be_falsey
       end
     end
   end

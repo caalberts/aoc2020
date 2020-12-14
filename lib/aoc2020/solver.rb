@@ -9,7 +9,8 @@ module Aoc2020
       4 => PassportProcessing,
       5 => BinaryBoarding,
       6 => CustomCustoms,
-      7 => HandyHaversacks
+      7 => HandyHaversacks,
+      8 => HandheldHalting
     }.freeze
 
     attr_reader :day, :part
@@ -20,7 +21,9 @@ module Aoc2020
     end
 
     def solve
-      PROBLEMS[day].new(input).public_send("part#{part}")
+      PROBLEMS.fetch(day).new(input).public_send("part#{part}")
+    rescue KeyError
+      warn "Unimplemented problem for day #{day}"
     end
 
     def verify_cookie

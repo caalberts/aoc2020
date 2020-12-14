@@ -10,7 +10,8 @@ module Aoc2020
       5 => BinaryBoarding,
       6 => CustomCustoms,
       7 => HandyHaversacks,
-      8 => HandheldHalting
+      8 => HandheldHalting,
+      9 => EncodingError,
     }.freeze
 
     attr_reader :day, :part

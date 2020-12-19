@@ -2,6 +2,7 @@
 
 require 'aoc2020/config'
 require 'aoc2020/input'
+require 'aoc2020/adapter_array'
 require 'aoc2020/binary_boarding'
 require 'aoc2020/custom_customs'
 require 'aoc2020/encoding_error'

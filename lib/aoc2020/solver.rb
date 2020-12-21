@@ -13,7 +13,8 @@ module Aoc2020
       8 => HandheldHalting,
       9 => EncodingError,
       10 => AdapterArray,
-      11 => SeatingSystem
+      11 => SeatingSystem,
+      12 => RainRisk
     }.freeze
 
     attr_reader :day, :part
